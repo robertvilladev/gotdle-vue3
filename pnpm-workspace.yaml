@@ -1,0 +1,3 @@
+allowBuilds:
+  # vue-demi's postinstall only switches between Vue 2/3 builds; Vue 3 is the default.
+  vue-demi: false

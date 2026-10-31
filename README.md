@@ -1,54 +1,52 @@
-# gotdle-vue3
+# Gotdle: frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+A daily guessing game set in the Game of Thrones world, inspired by
+[loldle.net](https://loldle.net/) and [narutodle.net](https://narutodle.net/).
+Every day there's a new character to guess in each mode, and it's the same for
+every player.
 
-## Recommended IDE Setup
+> Status: **Phase 0 (foundations)**. Nothing is playable yet. See [ROADMAP.md](ROADMAP.md).
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Game modes
 
-## Recommended Browser Setup
+| Mode    | Guess                                                                      | Status        |
+| ------- | -------------------------------------------------------------------------- | ------------- |
+| Classic | A character, from per-attribute feedback (house, status, region, seasons…) | planned (MVP) |
+| Quote   | Who said this quote                                                        | planned (MVP) |
+| Scene   | Which season a scene is from                                               | post-MVP      |
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Repos
 
-## Type Support for `.vue` Imports in TS
+- **Frontend** (this repo): Vue 3 + Vite + TypeScript, Tailwind CSS v4, TanStack Query, Pinia
+- **Backend**: [gotdle-api-fast-api](https://github.com/robertvilladev/gotdle-api-fast-api), FastAPI + PostgreSQL
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Getting started
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+Requires Node `^22.18` or `>=24.12` and [pnpm](https://pnpm.io/).
 
 ```sh
 pnpm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
+pnpm exec playwright install chromium   # once, for e2e tests
 pnpm dev
 ```
 
-### Type-Check, Compile and Minify for Production
+The app expects the backend at `http://localhost:8000`. See the backend README to
+start it.
 
-```sh
-pnpm build
-```
+## Scripts
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+| Command           | What it does                  |
+| ----------------- | ----------------------------- |
+| `pnpm dev`        | Dev server with hot reload    |
+| `pnpm build`      | Type-check + production build |
+| `pnpm preview`    | Serve the production build    |
+| `pnpm test:unit`  | Unit tests (Vitest)           |
+| `pnpm test:e2e`   | e2e tests (Playwright)        |
+| `pnpm type-check` | `vue-tsc`                     |
+| `pnpm lint`       | oxlint + ESLint, auto-fix     |
+| `pnpm format`     | Prettier on the whole repo    |
 
-```sh
-pnpm test:unit
-```
+## Docs
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
-```
+- [ROADMAP.md](ROADMAP.md): MVP goal, design rules, decisions, phases
+- [CLAUDE.md](CLAUDE.md): working conventions for AI agents (and humans)
